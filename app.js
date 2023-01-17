@@ -1,19 +1,6 @@
-// assignment and comparison operators
+const isSuited = 100 - 10 > 90 - 5
 
-let age = 18 + 5; // assignment operator
-age += 2 // age = age + 2
-age -= 3 // age = age - 3
-age *= 2 // age = age * 2
-age /= 2 // age = age / 2
 
-age++; // age = age + 1
-age--; // age = age - 1
-console.log(age);
-
-// Operators comparison
-const vasia = 20;
-console.log(age > vasia);
-console.log(age >= vasia);
-console.log(age < vasia);
-console.log(age <= vasia);
-console.log(age == vasia);
+// Таблица приоритетов операторов
+// https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
+console.log(isSuited);

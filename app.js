@@ -1,18 +1,19 @@
-// Basic arithmetic operators
+// assignment and comparison operators
 
-/* */
+let age = 18 + 5; // assignment operator
+age += 2 // age = age + 2
+age -= 3 // age = age - 3
+age *= 2 // age = age * 2
+age /= 2 // age = age / 2
 
-const width = 10;
-const height = 5;
-const space = width * height;
-const newWidth = width - 4;
-const newWidth2 = width + 4;
-const division = newWidth / newWidth2;
-const volume = 2 ** 3 // 2 * 2 * 2 
-console.log(volume);
+age++; // age = age + 1
+age--; // age = age - 1
+console.log(age);
 
-// Lines оператор "+" превращается в оператор конкетинации в рамкар работы со строками
-
-const city = 'Moscow';
-const street = 'Novoslobodskaya'
-console.log(city + ', ' + street);
+// Operators comparison
+const vasia = 20;
+console.log(age > vasia);
+console.log(age >= vasia);
+console.log(age < vasia);
+console.log(age <= vasia);
+console.log(age == vasia);

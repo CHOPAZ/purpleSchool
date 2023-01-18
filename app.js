@@ -1,53 +1,39 @@
-const role = 'manager';
+// Тернарные операторы
 
-if (role === 'manager') {
-  console.log('Manager');
-} else if (role === 'admin') {
-  console.log('Admin');
-} else if (role === 'Ceo') {
-  console.log('CEO');
+// Проблемы большая запись
+const bmwX3 = 100000;
+const fordFocus = 10000;
+const budjet = 20000;
+
+let message;
+if (budjet > bmwX3) {
+  message = 'BMW'
+} else if (budjet > fordFocus) {
+  message = 'Ford'
 } else {
-  console.log('Go back');
+  message = 'Велосипед'
 }
 
-switch (role) {
-  case 'manager': // role === 'manager'
-    console.log('Manager');
-    break;
-  case 'admin': // role === 'admin'
-    console.log('Admin');
-    break;
-  case 'ceo': // role === 'ceo'
-    console.log('Ceo');
-    break
-  default:
-    console.log('Go back');
-    break;
-}
+if (budjet > bmwX3) 
+  message = 'BMW'
+else if (budjet > fordFocus) 
+  message = 'Ford'
+else 
+  message = 'Велосипед'
 
-switch (role) {
-  case 'manager':
-  case 'admin':
-    console.log('Не руководитель');
-    break;
-  case 'ceo':
-    console.log('Руководитель');
-    break
-  default:
-    console.log('Go back');
-    break;
-}
 
-const num = 1;
+console.log(`Я хочу купить ${message}`);
 
-switch (true) {
-  case num > 0: // true === num > 0
-    console.log('Положительный');
-    break;
-  case num < 0: // true === num < 0
-    console.log('Отрицательный');
-    breake;
-  default: // true === num === 0
-    console.log('Ноль!');
-    break;
-}
+// Краткая запись if else - Тернарный оператор
+
+const str = 10 > 0 ? '> 0' :' < 0';
+console.log(str);
+
+// Перепишем про машины
+
+console.log(`Я хочу купить ${budjet > bmwX3 ? 'BMW' : 'Велосипед'}`);
+console.log(`Я хочу купить ${budjet > bmwX3 ? 'BMW' : budjet > fordFocus ? 'Ford' : 'Велосипед'}`);
+
+let message1 = budjet > bmwX3 
+  ? 'BMW'
+   : budjet > fordFocus ? 'Ford' : 'Велосипед'

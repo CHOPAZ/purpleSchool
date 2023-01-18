@@ -1,7 +1,22 @@
+const money = 10;
+const canBuy = money > 50;
 
-console.log(Boolean(0)); //false
-console.log(Boolean('')); //false
-console.log(Boolean(undefined)); //false
-console.log(Boolean(null)); //false
-console.log(Boolean(Number('sx'))); //false
-console.log(Boolean(NaN)); //false
+if (canBuy) {
+  console.log('You can buy');
+} else {
+  console.log('No money');
+}
+
+if (money > 50) {
+  console.log('You can buy');
+} else {
+  console.log('No money');
+}
+
+if (money > 50) {
+  console.log('You can buy');
+} else if (money > 5) {
+  console.log('You can buy mini');
+} else {
+  console.log('No money');
+}

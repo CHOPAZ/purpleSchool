@@ -1,22 +1,22 @@
-const money = 10;
-const canBuy = money > 50;
+/*
+	Васи положил 12 000$ на вклад 7% годовых с
+	капитализацией 1 раз в месяц.
+	Вывести в консоль, сможет ли он купить дом за 13 500$
+	через 2 года после снятия вклада. И остаток после покупки.
 
-if (canBuy) {
-  console.log('You can buy');
-} else {
-  console.log('No money');
-}
+	Итог = Сумма * (1 + Ставка в месяц не в %) ^ срок в месяцах
+*/
 
-if (money > 50) {
-  console.log('You can buy');
-} else {
-  console.log('No money');
-}
+const money = 12000;
+const depositProcentMonth = 0.0058;
+const depositLength = 24
+const houseCost = 13500;
 
-if (money > 50) {
-  console.log('You can buy');
-} else if (money > 5) {
-  console.log('You can buy mini');
+const result = money * (1 + depositProcentMonth) ** depositLength
+
+
+if (result >= houseCost) {
+  console.log(`You can buy a house, and you will have ${Math.round(result - houseCost)}$`);
 } else {
-  console.log('No money');
+  console.log(`You won't be able to buy a house you will have ${Math.round(result)} $`);
 }

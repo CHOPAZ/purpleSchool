@@ -1,39 +1,35 @@
-// Тернарные операторы
+/*
+	Методом prompt получите ответ пользователя
+	на вопрос "Сколько будет 7 + или - 15?". Если ответ верен
+	выведите в консоле "Успех", если нет - "Вы робот!",
+	а если он введёт "Я не робот", то тоже "Успех".
+*/
 
-// Проблемы большая запись
-const bmwX3 = 100000;
-const fordFocus = 10000;
-const budjet = 20000;
 
-let message;
-if (budjet > bmwX3) {
-  message = 'BMW'
-} else if (budjet > fordFocus) {
-  message = 'Ford'
-} else {
-  message = 'Велосипед'
+const askUser = prompt('Сколько будет 7 + или - 15?')
+
+switch (true) {
+  case Number(askUser) === 22:
+    console.log('Good');
+    break;
+  case Number(askUser) === -8:
+    console.log('Good');
+    break;
+  case askUser === 'Я не робот':
+    console.log('Good');
+    break;
+  default:
+    console.log('Error');
+    break;
 }
 
-if (budjet > bmwX3) 
-  message = 'BMW'
-else if (budjet > fordFocus) 
-  message = 'Ford'
-else 
-  message = 'Велосипед'
-
-
-console.log(`Я хочу купить ${message}`);
-
-// Краткая запись if else - Тернарный оператор
-
-const str = 10 > 0 ? '> 0' :' < 0';
-console.log(str);
-
-// Перепишем про машины
-
-console.log(`Я хочу купить ${budjet > bmwX3 ? 'BMW' : 'Велосипед'}`);
-console.log(`Я хочу купить ${budjet > bmwX3 ? 'BMW' : budjet > fordFocus ? 'Ford' : 'Велосипед'}`);
-
-let message1 = budjet > bmwX3 
-  ? 'BMW'
-   : budjet > fordFocus ? 'Ford' : 'Велосипед'
+switch (true) {
+  case Number(askUser) === 22:
+  case Number(askUser) === -8:
+  case askUser === 'Я не робот':
+    console.log('Good');
+    break;
+  default:
+    console.log('Error');
+    break;
+}

@@ -1,31 +1,24 @@
-/* Свойства аргументов*/
+/* Условия в функциях*/
 
-function toPower(num, power) {
-  console.log(typeof power);
-  const res = num ** power;
-  return res;
+function canAccessWebSite(age) {
+  if (age < 18) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
-console.log(toPower(2, 3)); // 3 - number
+console.log(canAccessWebSite(18));
 
-// если мы не зададим каой нибудь параметр, то будет NaN
-console.log(toPower(2)); // 3 - undefined ( 2 * undefined = NaN)
-
-// Проверка на нулевое значение || или через ??
-function toPower2(num, power) {
-  const power2 = power ?? 2
-  const res = num ** power2;
-  return res;
+function canAccessWebSite2(age) {
+  if (age < 18) {
+    return false;
+  }
+    return true;
 }
 
-console.log(toPower2(2,3)); // 8
-console.log(toPower2(2)); // 4
+console.log(canAccessWebSite2(16));
 
-//Задание  значений по умолчанию
+const canAccessWebSite3 = age => age < 18; // вернет true or false 
 
-function toPower3(num, power = 2) {
-  const res = num ** power;
-  return res;
-}
-
-console.log(toPower3(2));
+const canAccessWebSite4 = age => age < 18 ? 'Da' : 'Net'; // вернет да или нет

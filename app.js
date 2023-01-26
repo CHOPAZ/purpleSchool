@@ -1,23 +1,29 @@
-// Введение в функции
+// Анонимные  функции
 
-function logName(name, surname) {
-  console.log(`My name ${name} ${surname}`);
-  return undefined // формаольно возвращает undefined
+function powerOfTwo1(num) {
+  return num * num
 }
 
-logName('Pavel', 'Kvasnickiy');
-const a = logName('pavel', 'Kvasnickiy ')
-
-console.log(typeof a);
+console.log(powerOfTwo(5));
 
 
-function countDepositSum(depositInUSD, month, rate) {
-   return depositInUSD * (1 + rate / 12) ** month;
-  
+// Анонимная функция - у нее нет имени. Взяли фукункцию и положили ее в переменную
+const poft1 = function (num) {
+  return num * num;
 }
 
-const example1 = countDepositSum(1000, 24, 0.12)
-console.log(example1);
+console.log(poft1(6)); // вызов этой функции
 
-const example2 = countDepositSum(1000, 48, 0.10)
-console.log(example2);
+
+// Всплытие
+console.log(powerOfTwo2(5)); // сработает
+
+function powerOfTwo2(num) {
+  return num * num
+}
+
+console.log(poft2(6)); // будет ошибка, т.к. переменная poft еще не определена
+
+const poft2 = function (num) {
+  return num * num;
+}

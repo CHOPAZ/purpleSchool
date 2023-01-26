@@ -1,29 +1,27 @@
-// Анонимные  функции
+// Стрелочные функции
 
-function powerOfTwo1(num) {
-  return num * num
+// Обычная функция
+function powerOfTwo(num) {
+  return num * num;
 }
-
 console.log(powerOfTwo(5));
 
+// Стрелочная функция
 
-// Анонимная функция - у нее нет имени. Взяли фукункцию и положили ее в переменную
-const poft1 = function (num) {
-  return num * num;
-}
+const poft = (num) => num * num;
 
-console.log(poft1(6)); // вызов этой функции
+const poft1 = num => num * num;
 
-
-// Всплытие
-console.log(powerOfTwo2(5)); // сработает
-
-function powerOfTwo2(num) {
+const poft2 = num => {
+  console.log(num);  
   return num * num
-}
+};
 
-console.log(poft2(6)); // будет ошибка, т.к. переменная poft еще не определена
 
-const poft2 = function (num) {
-  return num * num;
-}
+console.log(poft(5));
+
+// Отличие всплытие, контекст - про контекст будет дальше
+
+
+console.log(poft3(5)); // ошибка, poft еще не задана
+const poft3 = (num) => num * num;

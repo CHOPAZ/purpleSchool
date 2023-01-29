@@ -1,82 +1,37 @@
-/*
-	Пользователь:
-	- Возраст
-	- Наличие работы
-	- Деньги
-	Нужно проверить может ли он купить новый MacBook за 2000$?
-	Он может брать не только свои деньги, но и взять кредит.
-	Ему дадут 500$, только если ему больше 24-х лет и он
-	имеет работу, 100$ если ему просто больше 24-х лет и 0 в
-	ином случае.
-	Напишите функцию, которая принимает данные пользователя
-	и товара и возвращает true или false;
-*/
-
-// const ageUser = 24;
-// const workUser = true;
-// const moneyUser = 1800;
-// const coastMacBook = 2000;
-
-// Варианты записи функций дадут ли кредит
-
-// function creditMoney (age, work) {
-//   if (age > 24 && work) {
-//     return 500;
-//   } else if (age >= 24 && !work) {
-//     return 100;
-//   } return 0;
-// }
-
-// function creditMoney (age, work = false) {
-//   switch (true) {
-//     case age > 24 && work:
-//       return 500
-//     case age >= 24:
-//       return 100
-//     default:
-//       return 0
-//   }
-// }
-
-// const creditMoney = (age, work) => (age > 24 && work) 
-//   ? 500
-//   : (age >= 24 && !work)
-//   ?  100 : 0
-
-// Варианты записы функции сможет ли купить
-
-// function canBuy(age, work, money) {
-//   const res = money + creditMoney(age,work);
-//   return res >= coastMacBook ? true : false
-// }
-
-// function canBuy(age, work, money) {
-//   const res = money + creditMoney(age,work);
-//   if (res >= coastMacBook) {
-//     return true;
-//   } return false;
-// }
-
-// const canBuy = (age, work, money) => {
-//   const res = money + creditMoney(age,work);
-//   return res >= coastMacBook;
-// }
-// const canBuy = (age, work, money) => {
-//   return coastMacBook <=  money + creditMoney(age,work);
-// }
-
-// console.log(canBuy(ageUser, workUser, moneyUser));
-
-
-// Самая короткая запись
-
-const creditMoney = (ageUser, hasWork = false) => ageUser > 24 && hasWork 
-  ? 500
-  : ageUser > 24
-  ?  100 : 0;
-
-const canBuy = (productPrice, ageUser, money, hasWork = false) => {
-  return productPrice <=  money + creditMoney(ageUser, hasWork);
+function a() {
+	return c();
 }
+function b() {
+	return 'Yes';
+}
+function c() {
+	return b;
+}
+const role1 = 'admin';
+const role2 = 'user';
+const role3 = 'superuser';
 
-console.log(canBuy(2000, 24, 1900));
+const roles = ['admin', 'user', 'superuser'];
+const userIfo = ['Anya', 25];
+console.log(roles);
+console.log(roles[0]); //admin
+console.log(roles[1]); //user
+console.log(roles[2]);//superuser
+console.log(roles[3]);//undefined
+console.log(roles.length); //3
+console.log(roles[roles.length - 1]); // superuser
+
+console.log(roles.at(0)); // admin - современный способ получения первого массива, но не все браузеры его поддерживают
+console.log(roles.at(-1)); // преимущество получения последнего элемента массива
+
+const userAge = [2040 - 2022, 20 - '6', 10 > 0 ? 5 : 0];
+console.log(userAge);
+
+const userNames = new Array('Vasya', 'Petya')
+console.log(userNames);
+
+function square(el) {
+	return el * el
+}
+console.log(square(5)); //25
+console.log(square([1,2,3])); //NaN

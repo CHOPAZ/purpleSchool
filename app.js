@@ -1,37 +1,23 @@
-function a() {
-	return c();
-}
-function b() {
-	return 'Yes';
-}
-function c() {
-	return b;
-}
-const role1 = 'admin';
-const role2 = 'user';
-const role3 = 'superuser';
+const users = ['Anya', 'Vika', 'Katya'];
+console.log(users);
 
-const roles = ['admin', 'user', 'superuser'];
-const userIfo = ['Anya', 25];
-console.log(roles);
-console.log(roles[0]); //admin
-console.log(roles[1]); //user
-console.log(roles[2]);//superuser
-console.log(roles[3]);//undefined
-console.log(roles.length); //3
-console.log(roles[roles.length - 1]); // superuser
+//ЗАмена элемента массива
+users[2] = 'Cristina';
+console.log(users);
 
-console.log(roles.at(0)); // admin - современный способ получения первого массива, но не все браузеры его поддерживают
-console.log(roles.at(-1)); // преимущество получения последнего элемента массива
+//Добавление элемента в массив
+users[3] = 'Nikita';
+console.log(users);
 
-const userAge = [2040 - 2022, 20 - '6', 10 > 0 ? 5 : 0];
-console.log(userAge);
+users[5] = 'Sasha';// 4 - элемент массива юудет empty
+console.log(users);
 
-const userNames = new Array('Vasya', 'Petya')
-console.log(userNames);
+// Удобные методы добавления и удаления элементов
 
-function square(el) {
-	return el * el
-}
-console.log(square(5)); //25
-console.log(square([1,2,3])); //NaN
+users.push('Pasha'); // Добавление в КОНЕЦ массива
+// const arrLength = users.push('Pasha'); // длина массива 7
+
+users.unshift('Dima') // Добавление в НАЧАЛО массива
+users.pop(); // Удаление ПОСЛЕДНЕГО элемента массива
+users.shift();// Удаление ПЕРВОГО элемента массива
+

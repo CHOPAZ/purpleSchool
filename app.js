@@ -1,26 +1,20 @@
-/*
-	Задача вывести в консоль строку "Я люблю JS !" из массива,
-	проходя циклом в обратном порядке, не используя метод reverse.
-	const arr = ['!', 'JS', 'люблю', 'Я'];
-*/
+//Цикл в цикле
 
-const arr = ['!', 'JS', 'люблю', 'Я'];
-const arr2 = [];
-const arr3 = [];
+// Сначала выполнится один раз цикл i, затем весь цикл j, затем снова один раз i, и снова весь цикл j и тд
 
-
-// Первый способ - учителя
-for (let i = arr.length - 1; i >= 0; i--) {
-  arr2.push(arr[i])
+for (let i = 1; i < 5; i++) {
+	console.log(`Цикл 1 - ${i}`);
+	for(let j = 1; j < 5; j++) {
+		console.log(`Цикл 2 - ${j}`);
+	}
 }
-console.log(arr2.join(' ')); 
 
+//Пример с массивом
+const tasks = [[1, 'Зачада 1'], [2, 'Зачада 2']];
 
-// Второй способ - мой
-for(let i = 1; i <= arr.length; i++) {
-  arr3.push(arr[arr.length - i])
+for (let i = 0; i < tasks.length; i++) {
+
+	for(let j = 0; j < tasks[i].length; j++) {
+		console.log(tasks[i][j]);
+	}
 }
-console.log(arr3.join(' '));
-
-//Третий способ - самый простой  ))
-console.log(arr.reverse().join(' '));

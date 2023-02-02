@@ -1,22 +1,65 @@
-//Цикл for of / for in
+/*
+	Есть выгрузка операций пользователя
+	const operations = [1000, -700, 300, -500, 10000];
+	а так же начальный баланс в 100$
+	Необходимо сделать функции расчёта:
+	- Итогового баланса
+	- Наличия отрицательного баланса (если после очередной операции
+		баланс < 0, то выдавать false)
+	- Расчёта среднего расхода и среднего дохода
+*/
 
-const arr = [1, 4, 8, 7];
+let startingBalance = 100;
+const operations = [1000, -700, 300, -500, 10000];
 
-for (let i = 0; i < arr.length; i++) {
-	console.log(arr[i]);
+//Итоговый баланс
+
+const finalBalance = (arrayOfOperations, initailBalance) => {
+	let balance = initailBalance;
+	for (const el of arrayOfOperations) {
+		balance += el;
+	}
+	return balance
 }
 
-//for of - итерируется по ЗНАЧЕНИЯМ элементов массива
+console.log(finalBalance(operations, startingBalance));
 
+//Наличия отрицательного баланса
 
-
-for (let element of arr) {
-	console.log(element);
+const negativeBalance = (arrayOfOperations, initailBalance) => {
+	let balance = initailBalance;
+	let isOk = true;
+	for (const el of arrayOfOperations) {
+		balance += el;
+		if (balance < 0) {
+			isOk = false;
+			break;
+		}
+	}
+	console.log(balance);
+	return isOk;
 }
 
-//for in - перебор массива по ИНДЕКСУ
+console.log(negativeBalance(operations, startingBalance));
 
-for (let index in arr) {
-	console.log(index);
+// Расчёта среднего расхода и среднего дохода
+
+const avarageOperations = (arrayOfOperations) => {
+	let positiveSum = 0;
+	let negativeSum = 0;
+	let positiveCount = 0;
+	let negativeCount = 0;
+	for (const el of arrayOfOperations){
+		if (el > 0) {
+			positiveCount++;
+			positiveSum += el
+		}
+		if (el < 0) {
+			negativeCount++;
+			negativeSum += el;
+		}
+	}
+	return [positiveSum / positiveCount, negativeSum / negativeCount]	
 }
 
+console.log(avarageOperations(operations));

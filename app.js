@@ -1,20 +1,39 @@
-//Цикл в цикле
-
-// Сначала выполнится один раз цикл i, затем весь цикл j, затем снова один раз i, и снова весь цикл j и тд
+//Цикл в while
 
 for (let i = 1; i < 5; i++) {
-	console.log(`Цикл 1 - ${i}`);
-	for(let j = 1; j < 5; j++) {
-		console.log(`Цикл 2 - ${j}`);
-	}
+	console.log(`Вывод - ${i}`);
 }
 
-//Пример с массивом
-const tasks = [[1, 'Зачада 1'], [2, 'Зачада 2']];
+//Перепишим на while
 
-for (let i = 0; i < tasks.length; i++) {
-
-	for(let j = 0; j < tasks[i].length; j++) {
-		console.log(tasks[i][j]);
-	}
+let i = 1;
+while (i < 5) {
+	console.log(`Вывод - ${i}`);
+	i++;
 }
+
+//
+const arr = [1, 4, 8, 7];
+
+for (let j = 0; j < arr.length; j++) {
+	if (arr[j] > 5) {
+		break
+	}
+	console.log(arr[j]);
+}
+
+//Перепишем на while
+
+let j = 0;
+while (arr[j] <= 5 && j < arr.length) {
+	console.log(arr[j]);
+	j++
+}
+
+//Цикл do while
+
+let k = 0;
+do {
+	console.log(arr[k]);
+	k++;
+} while (arr[k] <= 5 && k < arr.length)

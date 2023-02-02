@@ -1,9 +1,21 @@
-//Функции высшего порядка - принимают или / и возыращают другие функции 
+//Callback
 
-const a = (b) => b++;
-function g(a) { // g - функция высшего порядка - принимает и возвращает функцию
-	return a
+
+// Функции первого класса
+function add(a, b) {
+	return a + b;
 }
-function f() { // f - функция высшего порядка - возвращает функцию 
-	return a
+
+function subtrack(a, b) {
+	return a - b
 }
+
+// Функции высшего порядка - обстрагируется от реализации функции fn
+function calculate(a, b, fn) { // fn - функция callback
+	console.log(fn.name); //некий объект у которого есть свойство имя
+	const res = fn(a,b)
+	return res
+}
+
+console.log(calculate(2, 3, add));
+console.log(calculate(2, 3, subtrack));

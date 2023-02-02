@@ -1,25 +1,10 @@
-//Возврат одной функции из другой
+// function power(pow) {
+// 	return function(num) {
+// 		return num ** pow
+// 	}
+// }
 
-function power(pow) {
-	return function(num) {
-		return num ** pow
-	}
-}
+//Запишим в виде стрелочной функции
+const power = pow => num => num ** pow;
 
-//Пояснение как работает
-//Объявили функцию power, которая передаем один аргумент pow, эта функция возвращает нам другую анонимную функцию, в рамках этой новой функции нам потребуется еще само число (num), которое будем возводить в степень, и в результате выполнения анонимной функции возвращается число в нужной степени
-
-//Как теперь можно использовать такую конструкцию
-
-const powerOfTwo = power(2);
-console.log(powerOfTwo(5));
-//2 - pow, 5 - num
-
-const powerOfThree = power(3);
-console.log(powerOfThree(5));
-//3 - pow, 5 - num
-
-// Еще одна запись
-console.log(power(2)(5)); // 2 - pow, 5 - num
-
-//Это все замыкание , но подробнее об этом будет отдельно лекция
+console.log(power(2)(5));

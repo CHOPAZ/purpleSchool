@@ -1,21 +1,25 @@
-//Callback
+//Возврат одной функции из другой
 
-
-// Функции первого класса
-function add(a, b) {
-	return a + b;
+function power(pow) {
+	return function(num) {
+		return num ** pow
+	}
 }
 
-function subtrack(a, b) {
-	return a - b
-}
+//Пояснение как работает
+//Объявили функцию power, которая передаем один аргумент pow, эта функция возвращает нам другую анонимную функцию, в рамках этой новой функции нам потребуется еще само число (num), которое будем возводить в степень, и в результате выполнения анонимной функции возвращается число в нужной степени
 
-// Функции высшего порядка - обстрагируется от реализации функции fn
-function calculate(a, b, fn) { // fn - функция callback
-	console.log(fn.name); //некий объект у которого есть свойство имя
-	const res = fn(a,b)
-	return res
-}
+//Как теперь можно использовать такую конструкцию
 
-console.log(calculate(2, 3, add));
-console.log(calculate(2, 3, subtrack));
+const powerOfTwo = power(2);
+console.log(powerOfTwo(5));
+//2 - pow, 5 - num
+
+const powerOfThree = power(3);
+console.log(powerOfThree(5));
+//3 - pow, 5 - num
+
+// Еще одна запись
+console.log(power(2)(5)); // 2 - pow, 5 - num
+
+//Это все замыкание , но подробнее об этом будет отдельно лекция

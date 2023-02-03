@@ -1,33 +1,22 @@
-const score = [5, 10, 0, 15];
+//map - итерируется по массиву, и возвращает новый массив
+const transactionInUSD = [10, -7, 50, -10, 100];
 
-//for
-for (const el of score) {
-  console.log(el);
+// Сколько в рублях были транзакции через for
+const transactionInRUB = [];
+for (const el of transactionInUSD) {
+  transactionInRUB.push(el * 60);
 }
-
-for (const el in score) {
-  console.log(`Раунд ${el + 1}: ${score[el]}`);
-}
-
-for (const [i, el] of score.entries()) {
-  console.log(`Раунд ${i + 1}: ${el}`);
-}
-
-//forEach
-
-// const iterator = el => {
-//   console.log(`Раунд: ${el}`);
-// }
-// score.forEach(iterator)
-
-score.forEach(el => {
-  console.log(`Раунд: ${el}`);
-})
-
-score.forEach((el, i) => {
-  console.log(`Раунд ${i + 1}: ${el}`);
-})
+console.log(transactionInRUB); //[600, -420, 3000, -600, 6000]
+console.log(transactionInUSD); //[10, -7, 50, -10, 100]
 
 
-// У forEach нет break и continue - поэтому его нельзя прервать !!! У forEach есть проблемы с Асинхронностью
+//через map
 
+const transactionInRUB2 = transactionInUSD.map((el) => {
+  return el * 60
+});
+// const transactionInRUB2 = transactionInUSD.
+//  map((el) => el * 60);
+
+console.log(transactionInRUB2); //[600, -420, 3000, -600, 6000]
+console.log(transactionInUSD); //[10, -7, 50, -10, 100]

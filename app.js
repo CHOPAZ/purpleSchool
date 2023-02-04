@@ -1,18 +1,36 @@
-//Быстрое создание массивов
+const userName = 'Pasha Chopo';
 
-const arr = [1, 2, 3, 4, 5, 6];
-console.log(new Array(1, 2, 3, 4, 5, 6));
+console.log(userName[0]); // P
+console.log(userName[1]); // a
+console.log(userName[2]); // s
+console.log(userName[3]); // h
 
-//создание пустого массива определенной длины
-const arr2 = new Array(5); //(5) [empty × 5]
-console.log(arr2);
-//заполнение пустого массива
-arr2.fill(1); // [1, 1, 1, 1, 1]
-arr2.fill(2, 0, 3); // [2, 2, 2, 1, 1]
-arr2.fill(3, 3, 5); // [2, 2, 2, 3, 3]
-console.log(arr2);
+//charAt
+//Смайлики занимают длину 2
 
-const arr3 = Array.from({ length: 5 }, () => 6); //[6, 6, 6, 6, 6]
-console.log(arr3);
-const arr4 = Array.from({ length: 5 }, (cur, i) => i + 1); //[1, 2, 3, 4, 5]
-console.log(arr4);
+
+console.log(userName.charAt(2)); // s
+
+//узнать длину 
+
+console.log(userName.length); // 11
+
+//искать по строке - ищет первое 
+console.log(userName.indexOf('a')); // 1
+
+//искать по строке - ищет последнее
+console.log(userName.lastIndexOf('a'));//4
+console.log(userName.lastIndexOf('Ch'));//6
+console.log(userName.lastIndexOf('ch'));// -1 - нет такого
+
+//true false
+console.log(userName.includes('Ch'));// true
+console.log(userName.includes('ch'));// false
+
+//брать части строки
+console.log(userName.slice(6));//Chopo
+console.log(userName.slice(5));// Chopo
+console.log(userName.slice(4));//a Chopo
+console.log(userName.slice(6, 8));//Ch
+
+

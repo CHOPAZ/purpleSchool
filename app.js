@@ -1,22 +1,17 @@
+/*
+    Напичсать функцию, которая возвращает true, если элемент есть, и false, если нет.
+*/
+
 const arr = [2, 4, 4, 10, 20];
 
-// find - ищет конкретный элемент
+function some (array, element) {
+  const res = array.find(el => el === element)
+  return res === undefined ? false : true
 
-// вот так работает find
-let elGT5;
-for (const el of arr) {
-  if (el > 5) {
-    elGT5 = el;
-    break;
-  }
 }
 
-console.log(elGT5);
+console.log(some(arr, 1));
 
-elGT5 = arr.find(el => el > 5); // 10
-console.log(elGT5);
+// some - проверяет на наличие элемента
 
-//findeIndex - ищет индекс элемента удовлетворяющий условию
-
-elGT5Index = arr.findIndex(el => el > 5) // 3
-elGT5Index = arr.findIndex(el => el < 0) // -1
+console.log(arr.some(el => el === 2)); 

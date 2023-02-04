@@ -1,50 +1,18 @@
-//sort - сортировка. Меняет исходный массив
+//Быстрое создание массивов
 
-const users = ['Vasya', 'Masha', 'Olya', 'Pasha'];
-console.log(users);
+const arr = [1, 2, 3, 4, 5, 6];
+console.log(new Array(1, 2, 3, 4, 5, 6));
 
-// отсортировать по алфавитук
-users.sort(); // ['Masha', 'Olya', 'Pasha', 'Vasya']
-console.log(users);
+//создание пустого массива определенной длины
+const arr2 = new Array(5); //(5) [empty × 5]
+console.log(arr2);
+//заполнение пустого массива
+arr2.fill(1); // [1, 1, 1, 1, 1]
+arr2.fill(2, 0, 3); // [2, 2, 2, 1, 1]
+arr2.fill(3, 3, 5); // [2, 2, 2, 3, 3]
+console.log(arr2);
 
-const operations = [100, -20, 30, 480, -200];
-console.log(operations);
-operations.sort(); //[-20, -200, 100, 30, 480] - отсортировалить как строки
-console.log(operations);
-
-const operations2 = [100, -20, 30, 480, -200];
-
-//sort принимает callback, которая содержит два параменра a - 1 элемент, b - 2 элемент, эта ункция должна вернуть либо + либо - значение, в зависимости от того что она вернет, будет порядок либо сохранен либо изменен
-/*
-  Про порядок:
-  < 0 - a, b - сохраняем порядок
-  > 0 - b, a - меняем порядок
-*/
-// длинная запись сортировка по возрастанию
-operations2.sort((a, b) => {
-  if (a > b) {
-    return 1;
-  }
-  if (a < b) {
-    return -1;
-  }
-})
-console.log(operations2);
-
-//  длинная запись сортировка по убыванию
-const operations3 = [100, -20, 30, 480, -200];
-operations3.sort((a, b) => {
-  if (a > b) {
-    return -1;
-  }
-  if (a < b) {
-    return 1;
-  }
-})
-
-console.log(operations3);
-
-// короткая записиь сортировки по убыванию
-const operations4 = [100, -20, 30, 480, -200];
-operations4.sort((a,b) => a - b);
-console.log(operations4);
+const arr3 = Array.from({ length: 5 }, () => 6); //[6, 6, 6, 6, 6]
+console.log(arr3);
+const arr4 = Array.from({ length: 5 }, (cur, i) => i + 1); //[1, 2, 3, 4, 5]
+console.log(arr4);

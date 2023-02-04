@@ -1,14 +1,28 @@
-/*
-вытащить имя и фамилию в отдельные переменные
-*/
+const str = 'Вася Пупкина';
 
-const userName = 'Вася aka Terminator Perdinator Пупкин';
+console.log(str.includes('а')); //true
+console.log(str.startsWith('В')); // true
+console.log(str.endsWith('н')); //true
 
-console.log(userName.length);
+// под капотом это выгледит так, new String - это объект, у которого есть свои методы
+console.log(new String('Вася Пупкин').includes('a'));
 
-const name = userName.slice(0, userName.indexOf(' '));
-console.log(name);
-const serName = userName.slice(userName.lastIndexOf(' ') + 1,userName.length );
-console.log(serName);
+
+// Преобразование строки, не модифицируют исходную строку
+
+//простейшие преобразования
+console.log(str.toLowerCase());//вася пупкина
+console.log(str.toUpperCase());//ВАСЯ ПУПКИНА
+console.log(str.replace('В', 'Ф'));//Фася Пупкина
+console.log(str.replaceAll('а', 'и'));//Вися Пупкини
+console.log(str.replace('/а/g', 'и'));//Вися Пупкини
+
+const str2 = ' Вася Пупкина   \n';
+
+//Если хотим очистить строку от пробелов вначале и конце
+console.log(str2.trim()); //Вася Пупкина
+console.log(str2.trimEnd());// _Вася Пупкина
+console.log(str2.trimStart());//Вася Пупкина_
+
 
 

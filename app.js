@@ -1,4 +1,14 @@
-const film = 'Star Wars';
-console.log(film.padStart(10, '*'));//*Star Wars - длина 10
-console.log(film.padEnd(10, '*'));//Star Wars* - длина 10
-console.log(film.repeat(10));//Star WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar Wars
+/*
+  Замаскировать все, кроме последних 4-х символов
+*/
+
+/*
+  ************8353
+*/
+
+const card = '2342834503458353';
+
+function disguise (card) {
+  card = card.slice(-4).padStart(16, '*')
+  return card
+}

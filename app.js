@@ -1,14 +1,4 @@
-//Строки и массивы. Преобразование в массив и обратно
-
-const userFullName = 'Вася Пупкин Васильевич';
-console.log(userFullName.split(' ')); //['Вася', 'Пупкин', 'Васильевич']
-
-const [firstName, familyName, lastName] = userFullName.split(' ')
-console.log(firstName);//Вася
-console.log(familyName);//Пупкин
-console.log(lastName);//Васильевич
-
-//Обратно в массив join
-
-const arr = ['Ты', 'Значешь', 'JS'];
-console.log(arr.join(' '));
+const film = 'Star Wars';
+console.log(film.padStart(10, '*'));//*Star Wars - длина 10
+console.log(film.padEnd(10, '*'));//Star Wars* - длина 10
+console.log(film.repeat(10));//Star WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar Wars

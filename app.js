@@ -1,14 +1,15 @@
-/*
-  Замаскировать все, кроме последних 4-х символов
-*/
+// Знакомство с объектами
 
-/*
-  ************8353
-*/
+const userArray = ['Vasya', 'Pupkin', 24];
 
-const card = '2342834503458353';
-
-function disguise (card) {
-  card = card.slice(-4).padStart(16, '*')
-  return card
-}
+const user = {
+  name: 'Vasya',
+  sername: 'Pupkin',
+  age: 24,
+  skills: [
+    'Programming',
+    'Cooking'
+  ],
+  1: 1,
+  
+};

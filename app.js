@@ -1,33 +1,37 @@
-//Enhance object literals - позволяющий писать более компактно
-const wallet = {
-  balance: 0,
-  operations: [],
-  getIncreaseBalance: function (reason, sum) {
-      this.balance += sum;
-      return this.operations.push({reason, sum})
+//Итерирование по объекту
+const cities = {
+  msc: {
+    let: 200,
+    temp: 25
   },
-  getDecreaseBalance: function (reason, sum) {
-    if (this.balance < sum) {
-      console.log('Недостаточно баланса');
-      return false;
-    }
-      this.balance -= sum;
-      this.operations.push({reason, sum: -sum});
-      return true
-  },
-  getAmountOperations: function () {
-    return this.operations.length
+  spb: {
+    let: 100,
+    temp: 20
   }
-};
-
-const balance = 0;
-const wallet2 = {
-  balance, // 0
-  operations: []
 }
 
-const initialBalance = 7;
-const wallet3 = {
-  balance: initialBalance,
-  operations: []
+//Посчитать среднюю температуру в городах
+
+//Неоптимальная запись
+let avgTemp = 0;
+let citiesCount = 0;
+for(const key in cities) {
+  citiesCount++;
+  avgTemp += cities[key].temp
+}
+console.log(avgTemp / citiesCount);
+
+// Оптимальная запись
+let avgTemp2 = 0;
+let citiesCount2 = Object.keys(cities).length; // берет наш объект и из ключей делает массив, и длина будет и количество ключей
+console.log(Object.keys(cities)); // ['msc', 'spb']
+console.log(Object.keys(cities).length); // 2
+for(const key in cities) {
+  avgTemp2 += cities[key].temp
+}
+console.log(avgTemp2 / citiesCount2);
+
+//идентичная запись  через for of
+for(const key of Object.keys(cities)) {
+  avgTemp2 += cities[key].temp
 }

@@ -1,26 +1,12 @@
-/*
-  преобразовать пользователей до вида {fullName: 'Вася Пупкин, skillNum: 2}
-*/
+// Методы объектов - this - контекст (про него в отдельном модуле 15, 16)
 
-const users = [
-  {
+const user = {
     name: 'Вася',
     surname: 'Пупкин',
-    age: 30,
-    skills: ['Разработка', 'Dev0ps']
-  },
-  {
-    name: 'Катя',
-    surname: 'Белова',
-    age: 18,
-    skills: ['Дизайн']
-  },
-]
+    age: 24,
+    getFullName: function() {
+      return this.name + ' ' + this.surname
+    }
+}
 
-const users2 = users.map((user) => {
-  return {
-    fullName:`${user.name} ${user.surname}`,
-    skillNum: user.skills.length
-  }
-})
-console.log(users2);
+console.log(user.getFullName());

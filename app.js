@@ -1,37 +1,35 @@
-//Деструктуризация и rest на основе объектов
-const arr = [1, 2, 3, 4];
-const [z,y,x] = arr;
-console.log(z);// 1
-console.log(y);// 2
+//Optional chaining - доступ к свойствам если их нет 
 
+const cities = {
+  msk: {
+    temp: {
+      celcius: 25
+    }
+  },
+  spb: {
 
-let user = {
-  name: 'Vasya',
-  age: 40,
-  city: 'Moscow'
+  }
+}
+console.log(cities.msk.temp.celcius); // 25
+
+// P.s. - попытка взять свойство объекта у undefined вызовет ошибку
+
+// console.log(cities.spb.temp.celcius); // ошибка, tmp - undefined
+
+//Как правильно обратится - неудобно
+if(cities.spb  && cities.spb.temp) {
+  console.log(cities.spb.temp.celcius);
+}
+/* 
+if(cities.spb != undefined  && cities.spb.temp != undefined) {
+  console.log(cities.spb.temp.celcius);
+}
+*/
+
+let city = 'msk';
+if(cities[city]  && cities[city].temp) {
+  console.log(cities[city].temp.celcius);
 }
 
-const {age, name, ...userWithCity} = user;
-console.log(age); // 40
-console.log(name); // Vasya
-console.log(userWithCity);
-
-// Есть и спред
-
-const additionalData = {
-  skills: ['Разработка', 'Дизайн'],
-  creditCard: '1234-1234-1234-1234'
-};
-
-// Неудобно
-user.skills = additionalData.skills;
-user.creditCard = additionalData.creditCard
-console.log(user); //{name: 'Vasya', age: 40, city: 'Moscow', skills: Array(2), creditCard: '1234-1234-1234-1234'}
-
-//ТЕперь со спред оператором
-
-user ={
-  ...user,
-  ...additionalData
-}
-console.log(user); // {name: 'Vasya', age: 40, city: 'Moscow', skills: Array(2), creditCard: '1234-1234-1234-1234'}
+//Как правильно обратится - удобно и правильно через Optional chaining - ?.
+console.log(cities[city]?.temp?.celcius);

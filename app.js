@@ -1,37 +1,37 @@
-//Итерирование по объекту
-const cities = {
-  msc: {
-    let: 200,
-    temp: 25
-  },
-  spb: {
-    let: 100,
-    temp: 20
-  }
+//Деструктуризация и rest на основе объектов
+const arr = [1, 2, 3, 4];
+const [z,y,x] = arr;
+console.log(z);// 1
+console.log(y);// 2
+
+
+let user = {
+  name: 'Vasya',
+  age: 40,
+  city: 'Moscow'
 }
 
-//Посчитать среднюю температуру в городах
+const {age, name, ...userWithCity} = user;
+console.log(age); // 40
+console.log(name); // Vasya
+console.log(userWithCity);
 
-//Неоптимальная запись
-let avgTemp = 0;
-let citiesCount = 0;
-for(const key in cities) {
-  citiesCount++;
-  avgTemp += cities[key].temp
-}
-console.log(avgTemp / citiesCount);
+// Есть и спред
 
-// Оптимальная запись
-let avgTemp2 = 0;
-let citiesCount2 = Object.keys(cities).length; // берет наш объект и из ключей делает массив, и длина будет и количество ключей
-console.log(Object.keys(cities)); // ['msc', 'spb']
-console.log(Object.keys(cities).length); // 2
-for(const key in cities) {
-  avgTemp2 += cities[key].temp
-}
-console.log(avgTemp2 / citiesCount2);
+const additionalData = {
+  skills: ['Разработка', 'Дизайн'],
+  creditCard: '1234-1234-1234-1234'
+};
 
-//идентичная запись  через for of
-for(const key of Object.keys(cities)) {
-  avgTemp2 += cities[key].temp
+// Неудобно
+user.skills = additionalData.skills;
+user.creditCard = additionalData.creditCard
+console.log(user); //{name: 'Vasya', age: 40, city: 'Moscow', skills: Array(2), creditCard: '1234-1234-1234-1234'}
+
+//ТЕперь со спред оператором
+
+user ={
+  ...user,
+  ...additionalData
 }
+console.log(user); // {name: 'Vasya', age: 40, city: 'Moscow', skills: Array(2), creditCard: '1234-1234-1234-1234'}

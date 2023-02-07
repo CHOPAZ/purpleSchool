@@ -1,24 +1,18 @@
-/* Реализовать методы увеличения и уменьшения баланса,
-при котором каждая операция сохраняется в массив
-operations в виде { reason: 'Оплата налогов', sum: -100 }.
-Возвращается true, если успешно и false, если не зватает баланса.
-Также реализовать метод вывода числа операций по кошельку
-*/
-
+//Enhance object literals - позволяющий писать более компактно
 const wallet = {
   balance: 0,
   operations: [],
-  getIncreaseBalance: function (reasons, sums) {
-      this.balance += sums;
-      return this.operations.push({reason: reasons, sum: sums})
+  getIncreaseBalance: function (reason, sum) {
+      this.balance += sum;
+      return this.operations.push({reason, sum})
   },
-  getDecreaseBalance: function (reasons, sums) {
-    if (this.balance < sums) {
+  getDecreaseBalance: function (reason, sum) {
+    if (this.balance < sum) {
       console.log('Недостаточно баланса');
       return false;
     }
-      this.balance -= sums;
-      this.operations.push({reason: reasons, sum: -sums});
+      this.balance -= sum;
+      this.operations.push({reason, sum: -sum});
       return true
   },
   getAmountOperations: function () {
@@ -26,7 +20,14 @@ const wallet = {
   }
 };
 
-console.log(wallet);
-wallet.getIncreaseBalance('Чаевые', 10000);
-wallet.getDecreaseBalance('Оплата налогов', 1000);
-console.log(wallet.getAmountOperations());
+const balance = 0;
+const wallet2 = {
+  balance, // 0
+  operations: []
+}
+
+const initialBalance = 7;
+const wallet3 = {
+  balance: initialBalance,
+  operations: []
+}

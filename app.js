@@ -2,20 +2,33 @@
 
 'use strict';
 
-let name1 = 'Anton';
-let name2 = name1;
-name1 = 'New';
-console.log(name1);//New
-console.log(name2);// Anton;
+const user = {
+  name: 'Anton',
+  id: 1
+};
 
-const user1 = {
-  name: 'Anton'
-}
+user.name = 'Pasha';
+console.log(user); // {name: 'Pasha', id: 1}
 
-const user2 = user1;
-user2.name = 'New'
+const user2 = user;
+user.name = 'Bogdan'
+console.log(user);
+console.log(user2);
 
-console.log(user1);//New
-console.log(user2);//New
+// Как добится такого эффекта, что бы они были разными
 
-//Это поведение отличается от  примитивов, это связано с тем что объекты это ссылочный тип данных - подробное описание в видео
+//Вариант 1
+const user3 = Object.assign({}, user);
+user.name = 'Vitya'
+console.log(user3);//{name: 'Bogdan', id: 1}
+console.log(user); // {name: 'Vitya', id: 1}
+
+//Вариант 2
+const user4 = {
+  ...user
+};
+user.name = 'Sasha';
+user4.bord = '123';
+user4.gift = ['Admin']
+console.log(user4);//{name: 'Vitya', id: 1}
+console.log(user); // {name: 'Sasha', id: 1}

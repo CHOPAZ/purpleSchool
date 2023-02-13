@@ -1,23 +1,27 @@
 'use strict';
 
-/**
- Что делает 'use strict'
- 1) Невозможность объявления переменной без ключевого слова
- 2)Blocked scope для функции, т.е если мы без use strict создадим функцию внутри блока if (например), то она будет доступна в глобальное области видимости, а если использовать use strict - то она будет достна только в области видимости блока
- 3) Ограничение название перпеменных, которые могут добавится в язык поздее - т.е зарезервированные переменые
- 4) Удаление переменных через delete
- 6)Дублируемый параметр, использование with
- */ 
-
-let myCoolVariable = 1;
-
-if (true) {
-  myCoolVariabl = 3;
-  function a() {
-    console.log('Test');
-  }
+let successMessage = 'Успех';
+const user = {
+	name: 'Вася',
+	roles: []
 }
 
-a(); // будет ошибка
+function addRole(user, role) {
+	if (role == 'admin') {
+		const message = 'Ошибка';
+		console.log(message);
+		return user;
+	}
+	user.roles.push(role);
+	let successMessage = 'Ура';
+	console.log(successMessage);
 
-console.log(myCoolVariable);
+	function logRoles() {
+		console.log(user.roles);
+	}
+	logRoles();
+	return user;
+}
+
+console.log(addRole(user, 'admsin'));
+console.log(successMessage);

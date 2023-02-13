@@ -1,29 +1,21 @@
-// Контекст в методах
+// Arguments
 
 'use strict';
 
-const user = {
-  firstName: 'Vasya',
-  lastName: 'Pupkin',
-  age: 20,
-  getUserInfo: function() {
-    console.log(this);
-    console.log(`${this.firstName} ${this.lastName}`);
-
-    function canDrink() {
-      if(this.age >= 18) {
-        console.log('Может уже пить!');
-      } else {
-        console.log('Не может уже пить!');
-      }
-    }
-    canDrink();// будет ошибка так как this undefined, для решения использовать стрелочную функцию
-  },
-  getUserInfoArrow: () => {
-    console.log(this);//window
-    console.log(`${this.firstName} ${this.lastName}`);
-  }  
+function sumNum(num1, num2) {
+  console.log(this);//undefined
+  console.log(arguments); // object - Arguments(2) [1, 4, callee: (...), Symbol(Symbol.iterator): ƒ]
+  return num1 + num2;
 }
 
-user.getUserInfo();//Vasya Pupkin
-user.getUserInfoArrow();//undefined undefined
+//arguments - num1 num2
+
+console.log(sumNum(1,4));
+
+const sumNum2 = (num1, num2) => {
+  console.log(this);//window
+  console.log(arguments); // Uncaught ReferenceError: arguments is not defined
+  return num1 + num2;
+}
+
+console.log(sumNum2(1,4));

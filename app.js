@@ -1,21 +1,64 @@
-// Arguments
+/* 
+  дополнить объект методами для получения имени:
+  - компании
+  - сео
+  - сотрудника
+*/
 
 'use strict';
 
-function sumNum(num1, num2) {
-  console.log(this);//undefined
-  console.log(arguments); // object - Arguments(2) [1, 4, callee: (...), Symbol(Symbol.iterator): ƒ]
-  return num1 + num2;
+const company = {
+  name: 'ООО Агро',
+  employees: [
+    {
+      name: 'Света',
+    }
+  ],
+  ceo: {
+    name: 'Вася'
+  },
+  getNameCompany: function() {
+    return this.name;
+  },
+  getNameCeo: function() {
+    return this.ceo.name;
+  },
+  getNameEmpoyees: function() {
+    const nameEmpoyees = this.employees.map(e => {
+      return e.name;
+    })
+    return nameEmpoyees;
+  }
+
 }
 
-//arguments - num1 num2
+console.log(company.getNameCompany());
+console.log(company.getNameCeo());
+console.log(company.getNameEmpoyees());
 
-console.log(sumNum(1,4));
 
-const sumNum2 = (num1, num2) => {
-  console.log(this);//window
-  console.log(arguments); // Uncaught ReferenceError: arguments is not defined
-  return num1 + num2;
+// еще вариант
+const company2 = {
+	name: 'ООО Агро',
+	employees: [
+		{ 
+			name: 'Света',
+			getName: function () {
+				return this.name;
+			}
+		}
+	],
+	ceo: {
+		name: 'Вася',
+		getName: function () {
+			return this.name;
+		}
+	},
+	getName: function () {
+		return this.name;
+	}
 }
 
-console.log(sumNum2(1,4));
+console.log(company2.getName());
+console.log(company2.ceo.getName());
+console.log(company2.employees.map(employee => employee.getName()));

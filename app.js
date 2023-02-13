@@ -1,34 +1,23 @@
-//Примитивы и объекты
-
 'use strict';
 
-const user = {
-  name: 'Anton',
-  id: 1
-};
+/**
+ Что делает 'use strict'
+ 1) Невозможность объявления переменной без ключевого слова
+ 2)Blocked scope для функции, т.е если мы без use strict создадим функцию внутри блока if (например), то она будет доступна в глобальное области видимости, а если использовать use strict - то она будет достна только в области видимости блока
+ 3) Ограничение название перпеменных, которые могут добавится в язык поздее - т.е зарезервированные переменые
+ 4) Удаление переменных через delete
+ 6)Дублируемый параметр, использование with
+ */ 
 
-user.name = 'Pasha';
-console.log(user); // {name: 'Pasha', id: 1}
+let myCoolVariable = 1;
 
-const user2 = user;
-user.name = 'Bogdan'
-console.log(user);
-console.log(user2);
+if (true) {
+  myCoolVariabl = 3;
+  function a() {
+    console.log('Test');
+  }
+}
 
-// Как добится такого эффекта, что бы они были разными
+a(); // будет ошибка
 
-//Вариант 1
-const user3 = Object.assign({}, user);
-user.name = 'Vitya'
-console.log(user3);//{name: 'Bogdan', id: 1}
-console.log(user); // {name: 'Vitya', id: 1}
-
-//Вариант 2
-const user4 = {
-  ...user
-};
-user.name = 'Sasha';
-user4.bord = '123';
-user4.gift = ['Admin']
-console.log(user4);//{name: 'Vitya', id: 1}
-console.log(user); // {name: 'Sasha', id: 1}
+console.log(myCoolVariable);

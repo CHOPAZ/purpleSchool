@@ -1,24 +1,17 @@
 /*
-  Создайте объект пользователя с паролем.
-  С помощью функции ниже удалить пароль, сделав функцию сброса пароля
+  IIFE - intermedia invoke function expression - служило механизмом инкапсуляции - закрыть доступ к функции.
+
 */
 'use strict';
-
-function removePassword(reset) {
-  if (reset) {
-    this.password = undefined;
-  } else {
-    this.password = '1'
-  }
+function init () {
+  console.log('start');
 }
 
+init(); // - мы можем вызвать ее несколько раз, например несколько раз запросим инфу с бэка - что есть плохо, поэтому появилась возможность писать функции следующим образом:
 
-const user = {
-  login: 'admin',
-  password: '12345'
-};
+(function () {
+  console.log('start IIFO');
+  const a = 1
+})() // - позволяет все что внутри заключить внутрь нашей функции и никто извне не может получить туда доступ
 
-const resetUserPass = removePassword.bind(user, true);
-
-resetUserPass();
-console.log(user);
+// p.s - это все было до ES6, встречается редко

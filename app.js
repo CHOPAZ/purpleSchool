@@ -1,24 +1,39 @@
 /*
-  Замыкание
+ Сделать функцию пользователя, которая берет за основу userInfo и за счет замыкания создает новый объект, с которым можно работать как user1().increse(100)
 
 */
 'use strict';
 
-function changeBalance () {
-  let balance = 0;
-  return function(sum) {
-    balance += sum;
-    console.log(`Баланс: ${balance}`);
+const userInfo = {
+  balance: 0,
+  operations: 0,
+  increse (sum) {
+    this.balance += sum;
+    this.operations++
   }
 }
 
-const change = changeBalance(); // change будет равнятся return function(sum)
-change(100);
-change(-50);
-change(200);
+function user () {
+  const userObj = {
+    ...userInfo
+  };
+  return function () {
+    return userObj
+  }
+}
 
-// Замыкание - это комбинация функции и лексического окружения, в котором эта функция была определена.
+const user1 = user();
+user1().increse(100)
+user1().increse(100)
+console.log(user1());
 
-//Простыми словами: Функция помнит, в каком контексте она была создана и может его использовать
+const user2 = user();
+user2().increse(100);
+user2().increse(100);
+user2().increse(100);
+user2().increse(100);
+console.log(user2());
 
-console.dir(change)
+const user3 = user();
+user3().increse(1000);
+console.log(user3());

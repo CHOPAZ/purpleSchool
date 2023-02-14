@@ -1,64 +1,18 @@
-/* 
-  дополнить объект методами для получения имени:
-  - компании
-  - сео
-  - сотрудника
-*/
+//EOL - enhanced object literal для методов
 
-'use strict';
 
-const company = {
-  name: 'ООО Агро',
-  employees: [
-    {
-      name: 'Света',
-    }
-  ],
-  ceo: {
-    name: 'Вася'
+'use strict'
+
+const b = 1;
+
+const a = {
+  b,
+  getB: function () {
+    return this.b;
   },
-  getNameCompany: function() {
-    return this.name;
-  },
-  getNameCeo: function() {
-    return this.ceo.name;
-  },
-  getNameEmpoyees: function() {
-    const nameEmpoyees = this.employees.map(e => {
-      return e.name;
-    })
-    return nameEmpoyees;
+  getBAlt () { // EOL
+    return this.b;
   }
-
 }
 
-console.log(company.getNameCompany());
-console.log(company.getNameCeo());
-console.log(company.getNameEmpoyees());
-
-
-// еще вариант
-const company2 = {
-	name: 'ООО Агро',
-	employees: [
-		{ 
-			name: 'Света',
-			getName: function () {
-				return this.name;
-			}
-		}
-	],
-	ceo: {
-		name: 'Вася',
-		getName: function () {
-			return this.name;
-		}
-	},
-	getName: function () {
-		return this.name;
-	}
-}
-
-console.log(company2.getName());
-console.log(company2.ceo.getName());
-console.log(company2.employees.map(employee => employee.getName()));
+console.log(a.getBAlt());

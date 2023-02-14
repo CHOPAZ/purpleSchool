@@ -1,27 +1,24 @@
-//Bind - похож на call и apply, но сразу не вызывает ее
-
+/*
+  Создайте объект пользователя с паролем.
+  С помощью функции ниже удалить пароль, сделав функцию сброса пароля
+*/
 'use strict';
 
-const audi = {
-  make : 'Audi',
-  model: 'A3',
-  year: 2021,
-  damages: [],
+function removePassword(reset) {
+  if (reset) {
+    this.password = undefined;
+  } else {
+    this.password = '1'
+  }
 }
 
-const carManipulation = {
-  addDamage (part, rate) {
-    this.damages.push({
-      part,
-      rate 
-    })
-  }
+
+const user = {
+  login: 'admin',
+  password: '12345'
 };
 
-const addDamageAudi = carManipulation.addDamage.bind(audi);
-addDamageAudi('Крыло', 3);
+const resetUserPass = removePassword.bind(user, true);
 
-const addDamageAudiRoof = carManipulation.addDamage.bind(audi, 'Крыша');
-addDamageAudiRoof(5);
-
-console.log(audi);
+resetUserPass();
+console.log(user);

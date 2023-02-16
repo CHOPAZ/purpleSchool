@@ -1,27 +1,11 @@
 /*
-  Обработка нажатий
+ Обработка событий клавиатуры
 
 */
 
 'use strict'
 
-// document.querySelector('.button').addEventListener('click', (event) => {
-//   console.log(event); // детальная инфа о событии которое произошло - но об этом потом
-// })
-
-// document.querySelector('.button').addEventListener('click', () => {
-//   const input = document.querySelector('.input').value
-//   if (!input) {
-//     return
-//   }
-//   document.querySelector('.panel').innerText = input
-//   document.querySelector('.input').value = '';
-// })
-
-
-//Запись подругому
-
-function changeClick () {
+function submitForm () {
   const input = document.querySelector('.input').value
   if (!input) {
     return
@@ -30,5 +14,20 @@ function changeClick () {
   document.querySelector('.input').value = '';
 }
 
-//теперь для его вызова мы переходим в HTML и записываем его кнопке
 
+
+// document.querySelector('.input').addEventListener('keydown', (event) => {
+//   // console.log(event); //KeyboardEvent {isTrusted: true, key: 'f', code: 'KeyF', location: 0, ctrlKey: false, …}
+
+//   if (event.code === 'Enter') {
+//     submitForm();
+//   }
+// })
+
+//Так же мы можем не через addEventListener, привязаться в самому input в HTML
+
+function inputChanged(event) {
+  if (event.code === 'Enter') {
+    submitForm();
+  }
+}

@@ -24,3 +24,14 @@ function inputChanged(event) {
     submitForm();
   }
 }
+
+console.log(document.querySelector('.one').innerText);//Элемент 1
+console.log(document.querySelector('.one ~ div').innerText);//Элемент 2 - не очень хорошо
+console.log(document.querySelector('#two').innerText);// Элемент 3
+console.log(document.querySelector('[user-id="4"]').innerText);// Элемент 4
+
+//Алтьтернативные пути
+console.log(document.querySelectorAll('.one')[0].innerText)//Элемент 1
+console.log(document.querySelectorAll('.one')[1].innerText)//Элемент 2
+console.log(document.getElementById('two').innerText);//Элемент 3
+console.log(document.querySelector('[user-id="4"]').innerText);// Элемент 4

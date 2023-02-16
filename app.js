@@ -1,39 +1,19 @@
 /*
- Сделать функцию пользователя, которая берет за основу userInfo и за счет замыкания создает новый объект, с которым можно работать как user1().increse(100)
+  DOM -document object modal - это объектное представление исходного HTML-кода документа.
+
+  DOM не часть JS, это браузерое API, встроенное в браузер 
+
+  Блягодаря ему мы можем обращаться к HTML элементам из JS
 
 */
-'use strict';
 
-const userInfo = {
-  balance: 0,
-  operations: 0,
-  increse (sum) {
-    this.balance += sum;
-    this.operations++
-  }
-}
+'use strict'
+console.log(document.querySelector('.panel'));
+console.log(document.querySelector('.panel').innerHTML); //<span>I love this!</span>
+console.log(document.querySelector('.panel').innerText);// I love this!
 
-function user () {
-  const userObj = {
-    ...userInfo
-  };
-  return function () {
-    return userObj
-  }
-}
+document.querySelector('.panel').innerText = 'New text'; // New text
 
-const user1 = user();
-user1().increse(100)
-user1().increse(100)
-console.log(user1());
 
-const user2 = user();
-user2().increse(100);
-user2().increse(100);
-user2().increse(100);
-user2().increse(100);
-console.log(user2());
+document.querySelector('.input').value = 'Text' // инпут будет заполнен: Text
 
-const user3 = user();
-user3().increse(1000);
-console.log(user3());

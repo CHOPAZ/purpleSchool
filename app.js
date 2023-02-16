@@ -1,5 +1,5 @@
 /*
- Работа со стилями и классами
+    Установка атрибутов. P.S -АТРИБУТ ВСЕГДА СТРОКА
 
 */
 
@@ -12,23 +12,12 @@ function submitForm () {
   }
   document.querySelector('.panel').innerText = input
   document.querySelector('.input').value = '';
-  document.querySelector('.notification').style.display = 'block'
+  document.querySelector('.notification').getAttribute('class')//получение атрибута
+  document.querySelector('.notification').setAttribute('class', 'notification') // уберет все классы и змененит на notification - не очень вариант
+  document.querySelector('.notification').setAttribute('key', 1) //установка своего атрибута 
+  document.querySelector('.notification').setAttribute('user-id', 1) //установка своего атрибута 
+
 }
-
-//Второй вариант через работу с классами - добавим в файл стилей модификатор notification_active
-
-function submitForm () {
-  const input = document.querySelector('.input').value
-  if (!input) {
-    return
-  }
-  document.querySelector('.panel').innerText = input
-  document.querySelector('.input').value = '';
-  document.querySelector('.notification').classList.add('notification_active')
-  // document.querySelector('.notification').classList.remove('notification_active') // удаление класса
-}
-
-
 
 function inputChanged(event) {
   if (event.code === 'Enter') {

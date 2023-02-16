@@ -1,19 +1,34 @@
 /*
-  DOM -document object modal - это объектное представление исходного HTML-кода документа.
-
-  DOM не часть JS, это браузерое API, встроенное в браузер 
-
-  Блягодаря ему мы можем обращаться к HTML элементам из JS
+  Обработка нажатий
 
 */
 
 'use strict'
-console.log(document.querySelector('.panel'));
-console.log(document.querySelector('.panel').innerHTML); //<span>I love this!</span>
-console.log(document.querySelector('.panel').innerText);// I love this!
 
-document.querySelector('.panel').innerText = 'New text'; // New text
+// document.querySelector('.button').addEventListener('click', (event) => {
+//   console.log(event); // детальная инфа о событии которое произошло - но об этом потом
+// })
+
+// document.querySelector('.button').addEventListener('click', () => {
+//   const input = document.querySelector('.input').value
+//   if (!input) {
+//     return
+//   }
+//   document.querySelector('.panel').innerText = input
+//   document.querySelector('.input').value = '';
+// })
 
 
-document.querySelector('.input').value = 'Text' // инпут будет заполнен: Text
+//Запись подругому
+
+function changeClick () {
+  const input = document.querySelector('.input').value
+  if (!input) {
+    return
+  }
+  document.querySelector('.panel').innerText = input
+  document.querySelector('.input').value = '';
+}
+
+//теперь для его вызова мы переходим в HTML и записываем его кнопке
 

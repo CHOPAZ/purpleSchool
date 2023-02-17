@@ -1,5 +1,5 @@
 /*
-  Добавление html на лету
+  Local Storage - хранение данных
 
 */
 
@@ -12,7 +12,7 @@ function submitForm () {
   }
   document.querySelector('.panel').innerText = input
   document.querySelector('.input').value = '';
-  document.querySelector('.notification').getAttribute('class')//получение атрибута
+  document.querySelector('.notification').classList.add('notification_active')
 }
 
 function inputChanged(event) {
@@ -21,14 +21,11 @@ function inputChanged(event) {
   }
 }
 
-//Создание элемента
+localStorage.setItem('token', 'asdsad');
+localStorage.setItem('token1', 1);
+localStorage.setItem('token2', true);
 
-const panelText = 'Панель';
-const pannelButton = 'button';
-const newElement = document.createElement('div');
-newElement.setAttribute('user-id', 1);
-newElement.classList.add('panel');
-// newElement.innerText = 'Кнопка'
-newElement.innerHTML = `<button class="${pannelButton}">${panelText}</button>`
+console.log(localStorage.getItem('token1'));
+localStorage.removeItem('token2');
+localStorage.clear()
 
-document.querySelector('.test').appendChild(newElement);

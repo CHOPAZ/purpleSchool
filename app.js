@@ -21,11 +21,24 @@ function inputChanged(event) {
   }
 }
 
-localStorage.setItem('token', 'asdsad');
-localStorage.setItem('token1', 1);
-localStorage.setItem('token2', true);
 
-console.log(localStorage.getItem('token1'));
-localStorage.removeItem('token2');
-localStorage.clear()
+//JSON -Java Script Object Notation - нотация описания объекта совместимый с JS и не только с ним 
+/* как выглядит JSON:
+  [
+    {
+      "key": "string",
+      "num": 5,
+      "boolean": false,
+      "arr": ["s", "d"],
+      "obj": {
+        "innerKey": "3"
+      }
+    }
+]
+*/
 
+const obj = JSON.parse('{ "a": 1 }')
+console.log(obj); //{a: 1} - объект
+
+const str = JSON.stringify(obj);
+console.log(str); // {"a":1} - строка

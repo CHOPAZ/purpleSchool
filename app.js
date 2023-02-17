@@ -1,5 +1,5 @@
 /*
-    Установка атрибутов. P.S -АТРИБУТ ВСЕГДА СТРОКА
+  Добавление html на лету
 
 */
 
@@ -13,10 +13,6 @@ function submitForm () {
   document.querySelector('.panel').innerText = input
   document.querySelector('.input').value = '';
   document.querySelector('.notification').getAttribute('class')//получение атрибута
-  document.querySelector('.notification').setAttribute('class', 'notification') // уберет все классы и змененит на notification - не очень вариант
-  document.querySelector('.notification').setAttribute('key', 1) //установка своего атрибута 
-  document.querySelector('.notification').setAttribute('user-id', 1) //установка своего атрибута 
-
 }
 
 function inputChanged(event) {
@@ -25,13 +21,14 @@ function inputChanged(event) {
   }
 }
 
-console.log(document.querySelector('.one').innerText);//Элемент 1
-console.log(document.querySelector('.one ~ div').innerText);//Элемент 2 - не очень хорошо
-console.log(document.querySelector('#two').innerText);// Элемент 3
-console.log(document.querySelector('[user-id="4"]').innerText);// Элемент 4
+//Создание элемента
 
-//Алтьтернативные пути
-console.log(document.querySelectorAll('.one')[0].innerText)//Элемент 1
-console.log(document.querySelectorAll('.one')[1].innerText)//Элемент 2
-console.log(document.getElementById('two').innerText);//Элемент 3
-console.log(document.querySelector('[user-id="4"]').innerText);// Элемент 4
+const panelText = 'Панель';
+const pannelButton = 'button';
+const newElement = document.createElement('div');
+newElement.setAttribute('user-id', 1);
+newElement.classList.add('panel');
+// newElement.innerText = 'Кнопка'
+newElement.innerHTML = `<button class="${pannelButton}">${panelText}</button>`
+
+document.querySelector('.test').appendChild(newElement);

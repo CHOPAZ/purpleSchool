@@ -85,7 +85,7 @@ function rerenderContent(activeHabbit) {
     element.innerHTML = `
       <div class="habbit__day">День ${Number(index) + 1}</div>
       <div class="habbit__comment">${activeHabbit.days[index].comment}</div>
-      <button class="habbit__delet"><img src="./images/delete.svg" alt="Delet"></button>
+      <button class="habbit__delet"><img src="./images/delete.svg" alt="Delet" onclick="removeDay(${index})"></button>
     `;
     page.content.daysContainer.appendChild(element);
   }
@@ -119,6 +119,23 @@ function addDays(event) {
   form['comment'].value = '';
   rerender(glovalActiveHabbitId);
   saveData(); //сохраняем коммент, что бы при обновлении не исчезал новый коммент
+}
+
+/* remove day */
+
+function removeDay(index) {
+  habbits = habbits.map(item => {
+    if (item.id === glovalActiveHabbitId) {
+      item.days.splice(index, 1);
+      return {
+        ...item,
+        days: item.days
+      };
+    } 
+    return item
+  });
+  rerender(glovalActiveHabbitId);
+  saveData();
 }
 
 

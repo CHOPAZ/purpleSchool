@@ -94,6 +94,14 @@ function rerenderContent(activeHabbit) {
 
 }
 
+/* work with add new days  */
+
+function addDays(event) {
+  event.preventDefault();
+  const data = new FormData(event.target);
+  console.log(data.get('comment'));
+}
+
 
 function rerender(activeHabbitId) {
   const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId); 

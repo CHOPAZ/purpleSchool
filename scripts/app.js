@@ -2,6 +2,7 @@
 
 let habbits = []; // Состояние приложения фактически
 const HEBBIT_KEY = 'HEBBIT_KEY';
+let glovalActiveHabbitId;
 
 /* page */
 
@@ -89,21 +90,40 @@ function rerenderContent(activeHabbit) {
     page.content.daysContainer.appendChild(element);
   }
 
-  page.content.nextDay.innerText = `День ${activeHabbit.days.length + 1}`
+  page.content.nextDay.innerText = `День ${activeHabbit.days.length + 1}`;
+
 
 
 }
 
-/* work with add new days  */
+/* work with add new days comment  */
 
 function addDays(event) {
   event.preventDefault();
-  const data = new FormData(event.target);
-  console.log(data.get('comment'));
+  const form = event.target;
+  const data = new FormData(form);
+  const comment = data.get('comment');
+  form['comment'].classList.remove('error');
+  if (!comment) {
+    form['comment'].classList.add('error');
+  }
+  habbits = habbits.map(item => {
+    if (item.id === glovalActiveHabbitId) {
+      return {
+        ...item,
+        days: item.days.concat([{comment}])
+      }
+    }
+    return item;
+  })
+  form['comment'].value = '';
+  rerender(glovalActiveHabbitId);
+  saveData(); //сохраняем коммент, что бы при обновлении не исчезал новый коммент
 }
 
 
 function rerender(activeHabbitId) {
+  glovalActiveHabbitId = activeHabbitId;
   const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId); 
   if (!activeHabbit ) {
     return; // если нет активного меню, или массив пустой ничего не делать

@@ -224,6 +224,9 @@ input {
 input::placeholder {
 	color: #8899A8;
 }
+input.error {
+	border: 1px solid red;
+}
 .input_icon {
 	padding-left: 45px;
 }

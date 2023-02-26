@@ -16,6 +16,10 @@ const page = {
   content: {
     daysContainer: document.getElementById('days'),
     nextDay: document.querySelector('.habbit__day')
+  },
+  popup: {
+    index: document.getElementById('habbit-popup'),
+    iconField: document.querySelector('.popup__form input[name="icon"]')
   }
 }
 
@@ -31,6 +35,36 @@ function loadData () { //Загрузка данных
 
 function saveData () { //Сохранение данных
   localStorage.setItem(HEBBIT_KEY, JSON.stringify(habbits))
+}
+
+function validateAndGetFormData(form, fields) { //fields - список полей(name, comment и тд)
+  const formData = new FormData(form);
+  const res = {};
+  for (const field of fields) {
+    const fieldValue = formData.get(field);
+    form[field].classList.remove('error');
+    if (!fieldValue) {
+      form[field].classList.add('error');
+    }
+    res[field] = fieldValue;
+  }
+
+  let isValid = true;
+  for (const field of fields) {
+    if (!res[field]) {
+      isValid = false;
+    }
+  }
+  if (!isValid) {
+    return
+  }
+  return res
+}
+
+function resetForm(form, fields) {
+  for (const field of fields) {
+    form[field].value = '';
+  }
 }
 
 
@@ -100,23 +134,20 @@ function rerenderContent(activeHabbit) {
 
 function addDays(event) {
   event.preventDefault();
-  const form = event.target;
-  const data = new FormData(form);
-  const comment = data.get('comment');
-  form['comment'].classList.remove('error');
-  if (!comment) {
-    form['comment'].classList.add('error');
+  const data = validateAndGetFormData(event.target, ['comment'])
+  if (!data) {
+    return;
   }
   habbits = habbits.map(item => {
     if (item.id === glovalActiveHabbitId) {
       return {
         ...item,
-        days: item.days.concat([{comment}])
+        days: item.days.concat([{comment: data.comment}])
       }
     }
     return item;
   })
-  form['comment'].value = '';
+  resetForm(event.target, ['comment']);
   rerender(glovalActiveHabbitId);
   saveData(); //сохраняем коммент, что бы при обновлении не исчезал новый коммент
 }
@@ -148,6 +179,48 @@ function rerender(activeHabbitId) {
   rerenderMenu(activeHabbit);
   rerenderHead(activeHabbit);
   rerenderContent(activeHabbit);
+}
+
+/* toggle popup */
+
+function togglePopup() {
+  if (page.popup.index.classList.contains('cover_hidden')) {
+    page.popup.index.classList.remove('cover_hidden')
+  } else {
+    page.popup.index.classList.add('cover_hidden')
+  }
+  
+}
+
+/* установка новой иконки в скрытый инпут*/
+
+function setIcon(context, icon) {
+  page.popup.iconField.value = icon;
+  const activeIcon = document.querySelector('.icon.icon_active');
+  activeIcon.classList.remove('icon_active');
+  context.classList.add('icon_active');
+}
+
+/* add new habbit */
+
+function addHabbit(event) {
+  event.preventDefault();
+  const data = validateAndGetFormData(event.target, ['name', 'icon', 'target'])
+  if (!data) {
+    return;
+  }
+  const maxId = habbits.reduce((acc, habbit) => acc > habbit.id ? acc : habbit.id, 0)
+  habbits.push({
+    id: maxId + 1,
+    name: data.name,
+    target: data.target,
+    icon: data.icon,
+    days: []
+  })
+  resetForm(event.target, ['name', 'icon', 'target']);
+  togglePopup();
+  saveData();
+  rerender(maxId + 1)
 }
 
 /* init */
